@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 html,
 body,
 div,
@@ -24,13 +27,123 @@ html,body{
     height: 1080px;
 }
 
+section {
+    &.box-top {
+        background-image: url('../img/datapanel-top.png');
+    }
+    &.box-middle {
+        background-image: url('../img/datapanel-bottom.png');
+    }
+    &.box-bottom {
+        background-image: url('../img/datapanel-wifi.png');
+    }
+    .box-title {
+        font-size: 16px;
+        color: white;
+        font-weight: 300;
+        width: 168px;
+        height: 50px;
+        line-height: 30px;
+        background: url('../img/box-title.png') 0 11px no-repeat;
+        display: block;
+        margin: 0 auto;
+        padding: 10px 0;
+        text-align: center;
+    }
+    .box-switch {
+        width: 319px;
+        height: 35px;
+        background: url(../img/box-switch.png) 0 0 no-repeat;
+        position: absolute;
+        top: 16px;
+        left: 24px;
+        overflow: hidden;
+        li {
+            font-size: 16px;
+            color: #63BAF3;
+            width: 117px;
+            height: 33px;
+            line-height: 33px;
+            margin-top: 1px;
+            float: left;
+            text-align: center;
+            &.active {
+                color: #fff;
+            }
+            &:nth-child(1) {
+                &.active {
+                    background: url(../img/box-switch-1.png) 0 0 no-repeat;
+                }
+            }
+            &:nth-child(2) {
+                width: 95px;
+                height: 31px;
+                line-height: 31px;
+                margin-top: 2px;
+                &.active {
+                    background: url(../img/box-switch-2.png) 0 0 no-repeat;
+                }
+            }
+            &:nth-child(3) {
+                width: 107px;
+                height: 33px;
+                line-height: 33px;
+                margin-top: 1px;
+                &.active {
+                    background: url(../img/box-switch-3.png) 0 0 no-repeat;
+                }
+            }
+        }
+    }
+}
+.left-title,.right-title {
+    width: 460px;
+    height: 12px;
+    font-size: 20px;
+    line-height: 12px;
+    color: #ED4C4C;
+    text-align: center;
+    background: url('../img/left-title.png') 50% 0 no-repeat;
+}
+.btns {
+    background-image: url('../img/dwm.png'); // background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 95px;
+    height: 27px;
+    position: absolute;
+    top: 66px;
+    right: 15px;
+    text-align: center;
+    font-size: 0;
+    span {
+        font-size: 15px;
+        color: white;
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
+        margin: 0 1px;
+        text-align: center;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    span[middle] {
+        margin: 0 3.5px;
+    }
+    span.active {
+        background: url(../img/dwm-active.png);
+        color: #e3e3e3;
+    }
+}
+
 #selfUI() {
     .header {
-        height: 54px;
-        line-height: 54px;
+        height: 72px;
+        line-height: 52px;
         background-image: url(../img/header.png);
         background-repeat: no-repeat;
-        background-size: 100% 100%;
         color: white;
         text-align: center;
         font-size: 24px;
@@ -41,68 +154,31 @@ html,body{
         background-repeat: no-repeat;
         background-size: 100% 100%;
         height: 260px;
+        margin-top: 16px;
         position: relative;
         p {
             position: absolute;
             left: 20px;
-            top: 30px;
+            top: 52px;
+            width: 128px;
+            height: 49px;
+            padding: 4px 0 ;
             font-size: 14px;
             color: #e3e3e3;
-            font {
+            text-align: center;
+            background: url(../img/box-total-num.png) no-repeat;
+            .font {
                 color: red;
-                margin-right: 10px;
+                font-size: 18px;
+                font-weight: 600;
+                font-style: italic;
+                line-height: 22px; 
+                margin-right: 8px;
+                display: block;
+                &.inline {
+                    display: inline;
+                }
             }
-        }
-        h6 {
-            font-size: 16px;
-            font-weight: 300;
-            color: white;
-            position: absolute;
-        }
-        .btns {
-            background-image: url('../img/dwm.png'); // background-repeat: no-repeat;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            width: 95px;
-            height: 27px;
-            position: absolute;
-            top: 30px;
-            right: 20px;
-        }
-        span {
-            color: white;
-            &:hover {
-                cursor: pointer;
-            }
-        }
-        span:first-child {
-            display: inline-block;
-            width: 27px;
-            height: 27px;
-            line-height: 27px;
-            text-align: center;
-        }
-        span[middle] {
-            display: inline-block;
-            width: 27px;
-            height: 27px;
-            line-height: 27px;
-            text-align: center;
-            margin: 0 auto;
-        }
-        span:last-child {
-            display: inline-block;
-            width: 27px;
-            height: 27px;
-            line-height: 27px;
-            text-align: center;
-        }
-        .active {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: #2d8ecb;
-            color: #e3e3e3;
         }
     }
     .datePanelTwo {
@@ -112,65 +188,31 @@ html,body{
         margin-top: 20px;
         height: 320px;
         position: relative;
-        h6 {
-            font-size: 16px;
-            color: white;
-            position: absolute;
-        }
         p {
             position: absolute;
             left: 20px;
-            top: 30px;
+            top: 52px;
+            width: 128px;
+            height: 49px;
+            padding: 4px 0 ;
             font-size: 14px;
             color: #e3e3e3;
-            font {
+            text-align: center;
+            background: url(../img/box-total-num.png) no-repeat;
+            .font {
                 color: red;
-                margin-right: 10px;
+                font-size: 18px;
+                font-weight: 600;
+                font-style: italic;
+                line-height: 22px; 
+                margin-right: 8px;
+                display: block;
+                &.inline {
+                    display: inline;
+                }
             }
         }
-        .btns {
-            width: 95px;
-            height: 27px;
-            background-image: url('../img/dwm.png'); // background-repeat: no-repeat;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            position: absolute;
-            right: 20px;
-            top: 30px;
-        }
-        span {
-            color: white;
-            &:hover {
-                cursor: pointer;
-            }
-        }
-        span:first-child {
-            display: inline-block;
-            width: 27px;
-            height: 27px;
-            line-height: 27px;
-            text-align: center;
-        }
-        span[middle] {
-            display: inline-block;
-            width: 27px;
-            height: 27px;
-            line-height: 27px;
-            text-align: center;
-            margin: 0 auto;
-        }
-        span:last-child {
-            display: inline-block;
-            width: 27px;
-            height: 27px;
-            line-height: 27px;
-            text-align: center;
-        }
-        .active {
-            border-radius: 50%;
-            background: #2d8ecb;
-            color: #e3e3e3;
-        }
+        
     }
     .datePanelThree {
         height: 323px;
@@ -179,76 +221,42 @@ html,body{
         background-repeat: no-repeat;
         background-size: 100% 100%;
         position: relative;
-        h6 {
-            font-size: 16px;
-            color: white;
-            position: absolute;
-        }
         p {
             position: absolute;
             left: 20px;
-            top: 30px;
+            top: 52px;
+            width: 128px;
+            height: 49px;
+            padding: 4px 0 ;
             font-size: 14px;
             color: #e3e3e3;
-            font {
+            text-align: center;
+            background: url(../img/box-total-num.png) no-repeat;
+            .font {
                 color: red;
-                margin-right: 10px;
+                font-size: 18px;
+                font-weight: 600;
+                font-style: italic;
+                line-height: 22px;
+                margin-right: 8px;
+                display: block;
+                &.inline {
+                    display: inline;
+                }
             }
         }
-        .btns {
-            width: 95px;
-            height: 27px;
-            background-image: url('../img/dwm.png'); // background-repeat: no-repeat;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            position: absolute;
-            top: 30px;
-            right: 20px;
-        }
-        span {
-            color: white;
-            &:hover {
-                cursor: pointer;
-            }
-        }
-        span:first-child {
-            display: inline-block;
-            width: 27px;
-            height: 27px;
-            line-height: 27px;
-            text-align: center;
-        }
-        span[middle] {
-            display: inline-block;
-            width: 27px;
-            height: 27px;
-            line-height: 27px;
-            text-align: center;
-            margin: 0 auto;
-        }
-        span:last-child {
-            display: inline-block;
-            width: 27px;
-            height: 27px;
-            line-height: 27px;
-            text-align: center;
-        }
-        .active {
-            border-radius: 50%;
-            background: #2d8ecb;
-            color: #e3e3e3;
-        }
+        
     }
 }
 
 #allAroundPanel {
     width: 1920px;
     height: 1080px;
-    padding: 8px 20px 0 20px;
-    background-image: url('../img/background.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-color: black;
+    padding: 0 20px 0 20px;
+    // background-image: url('../img/background.png');
+    // background-repeat: no-repeat;
+    // background-size: 100% 100%;
+    background-color: #011327;
     header {
 		#selfUI.header();
         .datePanel {
@@ -260,23 +268,16 @@ html,body{
     }
     article {
         margin-top: 25px;
-        height: 600px;
+        height: 608px;
         display: flex;
         .left {
             width: 460px;
-            section:first-child {
+            margin-top: -8px;
+            section.box-top {
                 #selfUI.datePanelOne();
-                h6 {
-                    left: 193px;
-                    top: 12px;
-                }
             }
-            section:last-child {
+            section.box-middle {
                 #selfUI.datePanelTwo();
-                h6 {
-                    left: 193px;
-                    top: 12px;
-                }
             }
         }
         .middle {
@@ -284,7 +285,7 @@ html,body{
             background-image: url('../img/datapanel.png');
             background-repeat: no-repeat;
             background-size: 100% 100%;
-            margin: 0 30px;
+            margin: 0 27px;
 			
 // 			padding: 10px;
 // 			display: flex;
@@ -336,69 +337,38 @@ html,body{
         }
         .right {
             width: 460px;
-            section:first-child {
-                background-image: url('../img/datapanel-top.png');
-                background-repeat: no-repeat;
-                background-size: 100% 100%;
-                height: 260px;
-                position: relative;
-                .title {
-                    font-size: 16px;
-                    color: white;
-                    position: absolute;
-                    left: 193px;
-                    top: 12px;
-                }
-                .allNumber{
-                    color: #62DCE2;
-                    position: absolute;
-                    top:30px;
-                    right: 10px;
-                    font-size: 14px;
-                    font-weight: 300;
+            margin-top: -8px;
+            section.box-top {
+                #selfUI.datePanelOne();
+                P {
+                    width: 157px;
+                    height: 34px;
+                    line-height: 34px;
+                    padding: 0;
+                    background: url(../img/box-total-num-inline-157.png) no-repeat;
+                    top:65px !important;
+                    font {
+                        position: relative;
+                        top: 2px;
+                    }
                 }
             }
-            section:last-child {
-                background-image: url('../img/datapanel-device.png') !important;
+            section.box-middle {
                 #selfUI.datePanelTwo();
-                h6 {
-                    left: 185px;
-                    top: 70px;
-                }
-                P{
-                    top:90px !important;
+                P {
+                    width: 157px;
+                    height: 34px;
+                    line-height: 34px;
+                    padding: 0;
+                    background: url(../img/box-total-num-inline-157.png) no-repeat;
+                    top:65px !important;
+                    font {
+                        position: relative;
+                        top: 2px;
+                    }
                 }
                 .btns{
-                    top:90px !important;
-                }
-                .kinds{
-                    background-image: url('../img/dwm.png');
-                    background-repeat: no-repeat;
-                    background-size: 100% 100%;
-                    width: 212px;
-                    height: 35px;
-                    position: absolute;
-                    top:10px;
-                    left:20px;
-                    display: flex;
-                    span{
-                        height: 35px;
-                        line-height: 35px;
-                        text-align: center;
-                        font-size: 14px;
-                        color: #69c5ff;
-                        width:70px;
-                    }
-                    span[middle]{
-                        margin: 0 1px;
-                        flex: 1;
-                    }
-                    .activeTwo{
-                        height: 33px;
-                        border-radius: 20px;
-                        background: #003455;
-                        border:solid 1px #3A899B;
-                    }
+                    top: 90px !important;
                 }
             }
         }
@@ -409,39 +379,6 @@ html,body{
         display: flex;
         section:first-child {
             #selfUI.datePanelThree();
-            h6 {
-                left: 193px;
-                top: 12px;
-            }
-            .kinds{
-                background-image: url('../img/dwm.png');
-                background-repeat: no-repeat;
-                background-size: 100% 100%;
-                width: 212px;
-                height: 35px;
-                position: absolute;
-                top:10px;
-                left:20px;
-                display: flex;
-                span{
-                    height: 35px;
-                    line-height: 35px;
-                    text-align: center;
-                    font-size: 14px;
-                    color: #69c5ff;
-                    width:70px;
-                }
-                span[middle]{
-                    margin: 0 1px;
-                    flex: 1;
-                }
-                .activeTwo{
-                    height: 33px;
-                    border-radius: 20px;
-                    background: #003455;
-                    border:solid 1px #3A899B;
-                }
-            }
         }
         section[middle] {
             flex: 1;
@@ -522,6 +459,7 @@ html,body{
             .bottom{
                 height: 48px;
                 display: flex;
+                
                 span{
                     width: 146px;
                     height: 48px;
@@ -540,44 +478,17 @@ html,body{
         section:last-child {
             background-image: url('../img/datapanel-device.png') !important;
             #selfUI.datePanelThree();
-            h6{
-                left: 176px;
-                top: 70px;
+            .box-switch {
+                top: 35px;
             }
-            p{
-                top:90px !important;
+            p {
+                display: flex;
+                width: 183px;
+                background: url(../img/box-total-num-183.png) no-repeat;
+                top:85px !important;
             }
             .btns{
                 top:90px !important;
-            }
-            .kinds{
-                background-image: url('../img/dwm.png');
-                background-repeat: no-repeat;
-                background-size: 100% 100%;
-                width: 212px;
-                height: 35px;
-                position: absolute;
-                top:10px;
-                left:20px;
-                display: flex;
-                span{
-                    height: 35px;
-                    line-height: 35px;
-                    text-align: center;
-                    font-size: 14px;
-                    color: #69c5ff;
-                    width:70px;
-                }
-                span[middle]{
-                    margin: 0 1px;
-                    flex: 1;
-                }
-                .activeTwo{
-                    height: 33px;
-                    border-radius: 20px;
-                    background: #003455;
-                    border:solid 1px #3A899B;
-                }
             }
         }
     }
@@ -585,7 +496,7 @@ html,body{
 
 #carPictureInfor {
     width: 460px;
-    height: 200px;
+    height: 160px;
     position: absolute;
     bottom: 0;
 }
@@ -613,7 +524,7 @@ html,body{
 
 #devicesPictureInfor{
     width: 460px;
-    height: 250px;
+    height: 200px;
     position: absolute;
     bottom: 0;
 }
