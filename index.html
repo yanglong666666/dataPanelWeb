@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<title>deepweb</title>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<script type="text/javascript" src="js/vue/vue.min.js"></script>
+
+<!-- 	<script type="text/javascript" src="js/highcharts/highcharts.min.js"></script>
+		<script type="text/javascript" src="js/highcharts/highcharts-more.min.js"></script>
+		<script type="text/javascript" src="js/highcharts/exporting.min.js"></script> 
+		<script type="text/javascript" src="js/highcharts/highcharts-zh_CN.js"></script>
+		<script type="text/javascript" src="js/highcharts/oldie.min.js"></script>
+		<script type="text/javascript" src="js/highcharts/grid-light.min.js"></script>
+		<script type="text/javascript" src="js/highcharts/highcharts-3d.js"></script>
+
+		<script type="text/javascript" src="map/js/ol.js"></script>
+		<script type="text/javascript" src="map/js/config.js"></script>
+		<script type="text/javascript" src="map/js/map.js"></script>
+
+		<script type="text/javascript" src="js/jquery/jquery-3.3.1.min.js"></script>
+
+		<script type="text/javascript" src="js/business/_warnChartService.js"></script>
+		<script type="text/javascript" src="js/business/_tempTest.js"></script> -->
+		
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8D2gn26LmrlNUspo5fYkTGRkmi5QE2qi"></script>
+	</head>
+
+	<body>
+		<div id="allAroundPanel">
+			<header>
+				<span class="datePanel">{{timerTxt}}</span>
+				庙山派出所综合数据
+			</header>
+			<article>
+				<div class="left">
+					<section>
+						<h6>车辆预警</h6>
+						<p>
+							<font>{{carNum}}</font>条数据
+						</p>
+						<div class="btns">
+							<span @click="carChangeQuery(0)" :class="{'active':carQueryIndex == 0}">日</span>
+							<span @click="carChangeQuery(1)" :class="{'active':carQueryIndex == 1}" middle>周</span>
+							<span @click="carChangeQuery(2)" :class="{'active':carQueryIndex == 2}">月</span>
+						</div>
+						<div id="carPictureInfor"></div>
+					</section>
+					<section>
+						<h6>人脸预警</h6>
+						<p>
+							<font>{{faceNum}}</font>条数据
+						</p>
+						<div class="btns">
+							<span @click="faceChangeQuery(0)" :class="{'active':faceQueryIndex == 0}">日</span>
+							<span @click="faceChangeQuery(1)" :class="{'active':faceQueryIndex == 1}" middle>周</span>
+							<span @click="faceChangeQuery(2)" :class="{'active':faceQueryIndex == 2}">月</span>
+						</div>
+						<div id="facePictureInfor"></div>
+					</section>
+				</div>
+				<div class="middle">
+					<div id="mapDiv" style="width: 100%; height:100%"></div>
+<!-- 					<div class="row">
+						<div class="cell">
+							<div id="testOne" style="width: 100%;height: 100%;"></div>
+						</div>
+						<div class="cell" style="margin-left: 10px;">
+							<div id="container" style="width: 100%;height: 100%;"></div>
+						</div>						
+					</div>
+					<div class="row" style="margin-top: 10px;">
+						<div id="allmap" class="cell">
+							
+						</div>
+						<div class="cell warn" style="margin-left: 10px;">
+							<img src="img/face.jpeg" >
+							<div>
+								<p>他是谁</p>
+								<p>他从哪来</p>
+								<p>他要去哪</p>
+								<p>他要干什么</p>
+							</div>
+						</div>							
+					</div>
+					<div class="circle">
+						安全
+					</div> -->
+				</div>
+				<div class="right">
+					<section>
+						<span class="title">车辆违章</span>
+						<span class="allNumber">违章总量:{{trafficALLNum}}</span>
+						<div id="trafficePictureInfor" style="height: 200px;width:460px; position: absolute;bottom: 0;"></div>
+					</section>
+					<section>
+						<div class="kinds">
+							<span @click="allCountChnageQueryData(0,null)" :class='{"activeTwo":allCountQueryKindIndex == 0}'>人脸数据</span>
+							<span middle @click="allCountChnageQueryData(2,null)" :class='{"activeTwo":allCountQueryKindIndex == 2}'>wifi数据</span>
+							<span @click="allCountChnageQueryData(1,null)" :class='{"activeTwo":allCountQueryKindIndex == 1}'>过车数据</span>
+						</div>
+						<h6>数据采集总量</h6>
+						<p>
+							<font>{{allCountNumber}}</font>条数据
+						</p>
+						<div class="btns">
+							<span @click="allCountChnageQueryData(null,0)" :class='{"active":allCountQueryTypeIndex == 0}'>日</span>
+							<span @click="allCountChnageQueryData(null,1)" :class='{"active":allCountQueryTypeIndex == 1}' middle>周</span>
+							<span @click="allCountChnageQueryData(null,2)" :class='{"active":allCountQueryTypeIndex == 2}'>月</span>
+						</div>
+						<div id="allCountPictureInfor" style="width: 460px;height: 200px;position: absolute;bottom: 0px;"></div>
+					</section>
+				</div>
+			</article>
+			<footer>
+				<section>
+					<h6>WiFi预警</h6>
+					<p>
+						<font>{{wifiNum}}</font>条数据
+					</p>
+					<div class="btns">
+						<span @click="wifiChangeQuery(0)" :class="{'active':wifiQueryIndex == 0}">日</span>
+						<span @click="wifiChangeQuery(1)" :class="{'active':wifiQueryIndex == 1}" middle>周</span>
+						<span @click="wifiChangeQuery(2)" :class="{'active':wifiQueryIndex == 2}">月</span>
+					</div>
+					<div id="wifiPictureInfor"></div>
+				</section>
+				<section middle>
+					<div class="top">
+						<div title>
+							<img leftsign src="/img/videoleft.png" alt>
+							<span title>庙山派出所实时监控画面</span>
+							<img rightsign src="/img/videoright.png" alt>
+							<img videolight src="/img/videolight.png" alt>
+							<span videolight>重点区域视频轮巡</span>
+						</div>
+					</div>
+					<div class="middle">
+						<img src="img/pageleft.png" alt>
+						<div class="middleList">
+							<div class="cell">
+								<div class="video">
+									<!-- <video loop=true autoplay="true" controls>
+                  <source src="/static/video/movie.mp4" type="video/mp4">
+                </video>-->
+								</div>
+								<div class="videobottom">
+									<a href="http://100.11.44.218:81/demo/PlayCtrl1.html?deviceCode=42011503051329512675&selfPort=6002&userId=42011500153000000001&userIdbak=42011500153000410940"
+									 target="_blank">万家湾路口</a>
+								</div>
+							</div>
+							<div class="cell">
+								<div class="video">
+									<!-- <video loop=true autoplay="true" controls>
+                  <source src="/static/video/movie.mp4" type="video/mp4">
+                </video>-->
+								</div>
+								<div class="videobottom">
+									<a target="_blank" href="http://100.11.44.218:81/demo/PlayCtrl1.html?deviceCode=42011503001325846659&selfPort=6002&userId=42011500153000000003&userIdbak=42011500153000000002">保利警务室</a>
+								</div>
+							</div>
+							<div class="cell">
+								<div class="video">
+									<!-- <video loop=true autoplay="true" controls>
+                  <source src="/static/video/movie.mp4" type="video/mp4">
+                </video>-->
+								</div>
+								<div class="videobottom">
+									<a href="http://100.11.44.218:81/demo/PlayCtrl1.html?deviceCode=42011503001326741638&selfPort=6004&userId=42011500153000000004&userIdbak=42011500153000459880"
+									 target="_blank">四方园路口1</a>
+								</div>
+							</div>
+							<div class="cell">
+								<div class="video">
+									<!-- <video loop=true autoplay="true" controls>
+                  <source src="/static/video/movie.mp4" type="video/mp4">
+                </video>-->
+								</div>
+								<div class="videobottom">
+									<a href="http://100.11.44.218:81/demo/PlayCtrl1.html?deviceCode=42011503001321568285&selfPort=6008&userId=42011500153000000005&userIdbak=42011500153000789112"
+									 target="_blank">四方园路口2</a>
+								</div>
+							</div>
+							<div class="cell">
+								<div class="video">
+									<!-- <video loop=true autoplay="true" controls>
+                  <source src="/static/video/movie.mp4" type="video/mp4">
+                </video>-->
+								</div>
+								<div class="videobottom">
+									<a href="http://100.11.44.218:81/demo/PlayCtrl1.html?deviceCode=42011503001327299145&selfPort=6010&userId=42011500153000000006&userIdbak=42011500153000508949"
+									 target="_blank">五月花公交</a>
+								</div>
+							</div>
+						</div>
+						<img src="img/pageright.png" alt>
+					</div>
+					<div class="bottom">
+						<!-- <span>区域防控</span> -->
+						<span><a style="text-decoration: none;color: white;" target="_blank" href="/kakou.html">车辆稽查</a></span>
+						<span move><a style="text-decoration: none;color: white;" target="_blank" href="/kakou.html">视频资源</a></span>
+						<span move><a style="text-decoration: none;color: white;" target="_blank" href="/kakou.html">人脸识别</a></span>
+						<span move><a style="text-decoration: none;color: white;" target="_blank" href="/kakou.html">视频结构化</a></span>
+						<span move><a style="text-decoration: none;color: white;" target="_blank" href="/kakou.html">车辆二次识别</a></span>
+						<span move><a style="text-decoration: none;color: white;" target="_blank" href="/kakou.html">wifi识别</a></span>
+						<!-- <span move><a style="text-decoration: none;color: white;" target="_blank" href="http://100.11.44.18:8080/Home/Login?userId=982E6812C30F40B6BED1249C5D5059FA&passWord=e10adc3949ba59abbe56e057f20f883e">案件侦查</a></span> -->
+						<!-- <span move><a style="text-decoration: none;color: white;" target="_blank" href="http://100.11.44.162:8080/deep/index.html#/">深度应用</a></span> -->
+					</div>
+				</section>
+				<section>
+					<div class="kinds">
+						<span @click="onLineChangeQuery(0)" :class="{'activeTwo':onLineQueryIndex == 0}">wifi设备</span>
+						<span @click="onLineChangeQuery(1)" :class="{'activeTwo':onLineQueryIndex == 1}" middle>摄像头</span>
+						<span @click="onLineChangeQuery(2)" :class="{'activeTwo':onLineQueryIndex == 2}">抓拍机</span>
+					</div>
+					<span v-show="onLineQueryIndex>0" style="color: #62DCE2;position: absolute;top: 100px;right: 20px;font-size: 14px;font-weight: 300;">在线数量
+						: [ {{onLineNum}} ]</span>
+					<h6>设备在线率</h6>
+					<div id="devicesPictureInfor"></div>
+				</section>
+			</footer>
+		</div>
+	</body>
+	<script src="js/main/ctrl.js"></script>
+</html>
