@@ -26,8 +26,8 @@
 		<script type="text/javascript" src="js/business/_warnChartService.js"></script>
 		<script type="text/javascript" src="js/business/_tempTest.js"></script> -->
 
-		<script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="js/jquery/jquery.bxslider.min.js"></script>
+	<script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery/jquery.bxslider.min.js"></script>
 	<script type="text/javascript"
 		src="http://api.map.baidu.com/api?v=2.0&ak=8D2gn26LmrlNUspo5fYkTGRkmi5QE2qi"></script>
 </head>
@@ -94,6 +94,30 @@
 					<div class="circle">
 						安全
 					</div> -->
+
+				<!-- 地图浮框start -->
+				<div class="self-built">
+					<ul>
+						<li class="renlian"><i></i>人脸卡口</li>
+						<li class="cheliang"><i></i>车辆卡口</li>
+						<li class="wifi"><i></i>WiFi设备</li>
+						<li class="shexiangtou"><i></i>摄像头</li>
+					</ul>
+				</div>
+				<div class="social-video">
+					<div class="title">社会视频资源</div>
+					<ul>
+						<li class="qiye"><i></i>企业</li>
+						<li class="shangchang"><i></i>商场</li>
+						<li class="xuexiao"><i></i>学校</li>
+						<li class="jiuba"><i></i>酒吧</li>
+						<li class="xiaoqu"><i></i>小区</li>
+						<li class="yiyuan"><i></i>医院</li>
+						<li class="jigou"><i></i>机构</li>
+					</ul>
+				</div>
+				<!-- 地图浮框end -->
+
 			</div>
 			<div class="right">
 				<div class="left-title">资源数据</div>
@@ -302,7 +326,28 @@
 				<div id="devicesPictureInfor"></div>
 			</section>
 		</footer>
+		<div class="model shadow" v-show="modelShowStatus">
+			<iframe width="100%" height="100%"
+				style="width:100%;height:100%;border:none;margin:0;padding:0;opacity:0;"></iframe>
+			<div class="model-popup">
+				<div class="model-close" @click="closeModel"></div>
+				<div class="model-title">人脸预警</div>
+				<div class="model-line"></div>
+				<div class="model-content">
+					<div class="model-avatar">
+						<img src='/img/face.jpeg' />
+					</div>
+					<ul class="">
+						<li>预警类型： 人员预警布控</li>
+						<li>预警位置： 庙山火车站</li>
+						<li>处理部门： 庙山派出所</li>
+						<li>预警时间： 2018-12-23 18:45:51</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</div>
+
 </body>
 <script src="js/main/ctrl.js"></script>
 

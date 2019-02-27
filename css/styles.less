@@ -290,7 +290,11 @@ section {
             background-repeat: no-repeat;
             background-size: 100% 100%;
             margin: 0 32px;
-			
+            
+            //地图浮框start
+            position: relative;
+            //地图浮框end
+
 // 			padding: 10px;
 // 			display: flex;
 // 			flex-direction: column;
@@ -599,7 +603,9 @@ section {
         height: 23px;
         left: -70px;
     }
-    
+    .bx-wrapper .bx-controls-direction a {
+        z-index: 1;
+    }
     .bx-wrapper .bx-next {
         background: url(/img/pageright.png) no-repeat;
         margin-top: -12px;
@@ -615,3 +621,158 @@ section {
         display: none;
     }
 }
+
+.model {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    &.shadow {
+        background-color: rgba(0,0,0,.65);
+    }
+    .model-popup {
+        position: absolute;
+        width: 1506px;
+        height: 532px;
+        top: 50%;
+        margin-top: -266px;
+        left: 50%;
+        margin-left: -753px;
+        padding: 45px 90px;
+        background: url(/img/model-popup.png) no-repeat;
+    }
+    .model-close {
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        right: 63px;
+        top: 48px;
+        background: url(/img/model-close.png) no-repeat;
+        
+    }
+    .model-title {
+        font-size: 28px;
+        margin: 15px 0;
+        text-align: center;
+        color: #E2191A;
+    }
+    .model-line {
+        width: 562px;
+        height: 21px;
+        margin: 20px auto;
+        background: url(/img/model-text-line.png) no-repeat;
+    }
+    .model-content {
+        width: 562px;
+        margin: 15px auto;
+        padding-left: 260px;
+        position: relative;
+        ul {
+            li {
+                font-size: 20px;
+                line-height: 32px;
+                color: #fefefe;
+                margin-bottom: 30px;
+                white-space: nowrap;
+            }
+        }
+    }
+    .model-avatar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 178px;
+        height: 222px;
+        background: url(/img/model-avatar.png) no-repeat;
+        padding: 1px;
+        img {
+            width: 176px;
+            height: 220px;
+        }
+    }
+}
+
+// 地图浮框start
+.self-built {
+    position: absolute;
+    top: 40px;
+    right: 142px;
+    color: #fff;
+    ul{
+        li { 
+            width: 56px;
+            height: 56px;
+            background: url(/img/self-built-block.png) no-repeat;
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 10px;
+            font-size: 12px;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            i {
+                width: 18px;
+                height: 18px;
+                margin: 8px auto 6px;
+                display: block;
+                background-repeat: no-repeat;
+            }
+            &.renlian i { background-image: url(/img/renlian.png) }
+            &.cheliang i { background-image: url(/img/cheliang.png) }
+            &.wifi i { background-image: url(/img/wifi.png) }
+            &.shexiangtou i { background-image: url(/img/shexiangtou.png) }
+        }
+    }
+}
+.social-video {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #fff;
+    .title {
+        width: 81px;
+        height: 81px;
+        padding: 21px 15px;
+        line-height: 18px;
+        font-size: 15px;
+        text-align: center;
+        background: url(/img/social-title.png) no-repeat;
+    }
+    ul{
+        width: 64px;
+        height: 441px;
+        background: url(/img/social-wrap.png) no-repeat;
+        position: relative;
+        top: -19px;
+        margin: 0 auto;
+        padding-top: 24px;
+        li { 
+            height: 60px;
+            font-size: 12px;
+            text-align: center;
+            background: url(/img/social-line.png) no-repeat 50% 55px;
+            white-space: nowrap;
+            overflow: hidden;
+            &:last-child {
+                background: none;
+            }
+            i {
+                width: 18px;
+                height: 18px;
+                margin: 8px auto 4px;
+                display: block;
+                background-repeat: no-repeat;
+            }
+            &.qiye i { background-image: url(/img/qiye.png) }
+            &.shangchang i { background-image: url(/img/shangchang.png) }
+            &.xuexiao i { background-image: url(/img/xuexiao.png) }
+            &.jiuba i { background-image: url(/img/jiuba.png) }
+            &.xiaoqu i { background-image: url(/img/xiaoqu.png) }
+            &.yiyuan i { background-image: url(/img/yiyuan.png) }
+            &.jigou i { background-image: url(/img/jigou.png) }
+        }
+    }
+}
+// 地图浮框end

@@ -18,7 +18,8 @@ let _vm = new Vue({
 			onLineNum: 0,
 			onLineQueryIndex: 0,
 
-			timerTxt: ""
+			timerTxt: "",
+			modelShowStatus: true
 		}
 	},
 	mounted() {
@@ -102,6 +103,9 @@ let _vm = new Vue({
 			// 					loadAllCountWifi("allCountPictureInfor", this.allCountQueryTypeIndex, this);
 			// 					break;
 			// 			}
+		},
+		closeModel(){
+			this.modelShowStatus = false;
 		}
 	}
 });
