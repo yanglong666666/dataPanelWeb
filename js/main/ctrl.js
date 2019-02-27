@@ -26,10 +26,10 @@ let _vm = new Vue({
 			GlobalMap.init("mapDiv");
 			var map = new BMap.Map("allmap");    // 创建Map实例
 			map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
-			
+
 			testOne();
 			testTwo();
-			
+
 		}, 500);
 
 		setInterval(() => {
@@ -47,6 +47,19 @@ let _vm = new Vue({
 				":" +
 				date.getSeconds();
 		}, 1000);
+		jQuery(document).ready(function ($) {
+			$('.slider1').bxSlider({
+				auto: true,
+				pause: 5000,
+				autoHover: true,
+				autoStart: true,
+				slideWidth: 118,
+				minSlides: 5,
+				maxSlides: 5,
+				moveSlides: 1,
+				slideMargin: 36
+			});
+		});
 	},
 	methods: {
 		carChangeQuery(_index) {
@@ -78,17 +91,17 @@ let _vm = new Vue({
 				this.allCountQueryKindIndex = _kindType;
 			}
 
-// 			switch (this.allCountQueryKindIndex) {
-// 				case 0:
-// 					loadAllCountFace("allCountPictureInfor", this.allCountQueryTypeIndex, this);
-// 					break;
-// 				case 1:
-// 					loadAllCountCar("allCountPictureInfor", this.allCountQueryTypeIndex, this);
-// 					break;
-// 				case 2:
-// 					loadAllCountWifi("allCountPictureInfor", this.allCountQueryTypeIndex, this);
-// 					break;
-// 			}
+			// 			switch (this.allCountQueryKindIndex) {
+			// 				case 0:
+			// 					loadAllCountFace("allCountPictureInfor", this.allCountQueryTypeIndex, this);
+			// 					break;
+			// 				case 1:
+			// 					loadAllCountCar("allCountPictureInfor", this.allCountQueryTypeIndex, this);
+			// 					break;
+			// 				case 2:
+			// 					loadAllCountWifi("allCountPictureInfor", this.allCountQueryTypeIndex, this);
+			// 					break;
+			// 			}
 		}
 	}
 });

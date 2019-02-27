@@ -289,7 +289,7 @@ section {
             background-image: url('../img/datapanel.png');
             background-repeat: no-repeat;
             background-size: 100% 100%;
-            margin: 0 27px;
+            margin: 0 32px;
 			
 // 			padding: 10px;
 // 			display: flex;
@@ -386,9 +386,9 @@ section {
             
         }
         section[middle] {
-            margin: 0 28px;flex: 1;
+            margin: 0 20px;flex: 1;
             .top{
-                margin-top: -16px;
+                margin: -16px 0 0 22px;
                 div[title]{
                     height: 20px;
                     position: relative;
@@ -427,27 +427,29 @@ section {
             }
             img[pagetop]{
                 display: block;
-                margin: 0 auto;
-                width: 848px;
+                margin: 0 0 0 50px;
                 height: 41px;
                 margin-top: 8px;
             }
             
             img[pagebottom]{
                 display: block;
-                margin: 0 auto;
-                width: 902px;
+                margin: 0 0 0 8px;
                 height: 69px;
+                position: relative;
+                left: 12px;
             }
             .middle{
                 align-items: center;
                 position: relative;
-                margin: -16px 60px -30px;
+                margin: -16px 60px -30px 75px;
                 .middleList{
-                   display: flex;
+                    width: 780px;
+                    overflow: hidden;
                    .cell{
                        width: 118px;
                        height: 126px;
+                       display: inline-block;
                        margin-left: auto;
                        position: relative;
                        .video{
@@ -493,17 +495,17 @@ section {
                 }
             }
             .bottom{
-                width: 700px;
+                width: 670px;
                 height: 136px;
-                overflow: hidden;
-                margin: 0 auto;
+                margin: 5px auto 0;
                 padding: 0 20px;
                 position: relative;
+                left: 10px;
                 >img {
                     position: absolute;
                     width: 19px;
                     height: 127px;
-                    top: -10px;
+                    top: -6px;
                 }
                 .bottom-left {
                     left: 10px;
@@ -516,7 +518,7 @@ section {
                     width: 146px;
                     height: 48px;
                     line-height: 48px;
-                    margin: 0 35px 20px;
+                    margin: 0 30px 20px;
                     font-size: 18px;
                     color: white;
                     text-align: center;
@@ -531,7 +533,7 @@ section {
         section:last-child {
             background-image: url('../img/datapanel-device.png') !important;
             #selfUI.datePanelThree();
-            width: 480px;
+            width: 470px;
             height: 326px;
             left: 4px;
             .box-switch {
@@ -583,4 +585,33 @@ section {
     height: 200px;
     position: absolute;
     bottom: 0;
+}
+
+
+#allAroundPanel {
+    .bx-wrapper {
+        margin: 0 auto;
+    }
+    .bx-wrapper .bx-prev {
+        background: url(/img/pageleft.png) no-repeat;
+        margin-top: -12px;
+        width: 36px;
+        height: 23px;
+        left: -70px;
+    }
+    
+    .bx-wrapper .bx-next {
+        background: url(/img/pageright.png) no-repeat;
+        margin-top: -12px;
+        width: 36px;height: 23px;
+        right: -60px;
+    }
+    .bx-wrapper .bx-viewport {
+        background: transparent;
+        border: none;
+        box-shadow: 0 0 0 0;
+    }
+    .bx-wrapper .bx-pager {
+        display: none;
+    }
 }
